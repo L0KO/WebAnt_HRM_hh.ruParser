@@ -10,7 +10,7 @@ export function Homepage() {
       name: "Viktor",
       status: "En cours",
       post: "Front-End Developer",
-      phone: "06 00 00 00 00",
+      phone: "+7 (961) 418 16 16",
       email: "<EMAIL>"
     },
     {
@@ -18,7 +18,7 @@ export function Homepage() {
       name: "Evgeniy",
       status: "En cours",
       post: "Back-End Developer",
-      phone: "06 00 00 00 00",
+      phone: "+7 (906) 000 13 13",
       email: "<EMAIL>"
     },
     {
@@ -26,7 +26,7 @@ export function Homepage() {
       name: "Olga",
       status: "En cours",
       post: "Manager",
-      phone: "06 00 00 00 00",
+      phone: "+7 (808) 101 15 15",
       email: "<EMAIL>"
     },
   ])

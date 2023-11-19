@@ -1,7 +1,8 @@
 import { Routes, Route, Link } from "react-router-dom"
 import { Homepage } from "./pages/Homepage"
 import { Infopage } from "./pages/Infopage"
-import "./css/App.css"
+import "../public/css/App.scss"
+
 
 function App() {
   return (
