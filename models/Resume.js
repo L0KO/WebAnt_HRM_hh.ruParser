@@ -6,8 +6,7 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true
         },
         state: {
-            type: DataTypes.ENUM,
-            values: ["Nothing", "Inter1", "Inter2", "Pass"],
+            type: DataTypes.JSONB,
             allowNull: false
         },
         personal_name: {
