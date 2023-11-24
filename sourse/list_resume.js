@@ -7,6 +7,7 @@ const models = initModels.initModels(sequelize);
 const {error, json} = require('./responseHelper')
 
 router.get('/', async (req, res) => {
+    res.header("Content-Type",'application/json');
     resumes = await models.Resume.findAll({
         attributes: ["id", "state", "personal_name", "contacts", "title"],
         raw: true,

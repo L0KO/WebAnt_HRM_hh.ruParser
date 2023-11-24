@@ -60,7 +60,13 @@ router.post('/', async (req, res) => {
 });
 
 function addToBD(resume) {
-    models.Resume.create(JSON.parse(resume));
+    fs.readFile('data/resume.json', async (err, data) => {
+        r = JSON.parse(data)
+        r.id = 20
+        r.state = {state: "hhh"}
+        models.Resume.create(r);
+    })
+    // models.Resume.create(JSON.parse());
 }
 
 models.Resume.sync();
