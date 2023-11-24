@@ -14,8 +14,6 @@ export function CandidateCard({ candidat }) {
         <div style={{display: "flex", gap: "20px"}} className="contact-info-card">
           <p className="card-title">{candidat.phone}</p>
           <p className="card-title">{candidat.email}</p>
-          <p className="card-title">{candidat.whatsApp}</p>
-          <p className="card-title">{candidat.telegram}</p>
         </div>
         <div style={{display: "flex", gap: "20px"}} className="contact-info-card">
           <p className="card-title">{candidat.vacancyStatus}</p>

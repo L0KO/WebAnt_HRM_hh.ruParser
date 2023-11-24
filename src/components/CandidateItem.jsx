@@ -15,9 +15,9 @@ export function CandidateItem({ id, name, status, post, phone, email, deleteCand
       </div>
       <div style={{ display: "flex", gap: "20px" }} className="btns-container">
       <Link to="/info" state={{ id: id }}>
-        <button class="button-36" role="button" type="submit">Edit</button>
+        <button className="button-36" role="button" type="submit">Edit</button>
       </Link>
-      <button onClick={() => deleteCandidate(id)} class="button-36-delete" role="button" type="submit">Delete</button>
+      <button onClick={() => deleteCandidate(id)} className="button-36-delete" role="button" type="submit">Delete</button>
       </div>      
     </li>
   )

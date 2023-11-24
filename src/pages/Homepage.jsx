@@ -1,35 +1,28 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { CandidatList } from "../components/CandidateList"
 import { NewCandidateForm } from "../components/NewCandidateForm"
 
 export function Homepage() {
 
-  const [candidat, setCandidat] = useState([
-    {
-      id: 0,
-      name: "Viktor",
-      status: "En cours",
-      post: "Front-End Developer",
-      phone: "+7 (961) 418 16 16",
-      email: "<EMAIL>"
-    },
-    {
-      id: 1,
-      name: "Evgeniy",
-      status: "En cours",
-      post: "Back-End Developer",
-      phone: "+7 (906) 000 13 13",
-      email: "<EMAIL>"
-    },
-    {
-      id: 2,
-      name: "Olga",
-      status: "En cours",
-      post: "Manager",
-      phone: "+7 (808) 101 15 15",
-      email: "<EMAIL>"
-    },
-  ])
+  const [candidat, setCandidat] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3000/resume/list/')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    const newCandidat = data.map(element => ({
+    id: element.id,
+    name: element.personal_name,
+    status: "",
+    post: element.title,
+    phone: element.contacts.phone,
+    email: element.contacts.email
+    }));
+    setCandidat(newCandidat);
+    })
+    .catch(error => console.log('Ошибка:', error));
+    }, []);
 
   function addCandidate(name, post, phone, email) {
     setCandidat([...candidat, {

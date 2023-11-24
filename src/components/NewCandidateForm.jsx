@@ -21,24 +21,24 @@ export function NewCandidateForm({ addCandidate }) {
     <>
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-        <div class="form__group field">
-          <input type="input" class="form__field" placeholder="Name" name="name" id='name' required />
-          <label for="name" class="form__label">Name</label>
+        <div className="form__group field">
+          <input type="input" className="form__field" placeholder="Name" name="name" id='name' required />
+          <label htmlFor="name" className="form__label">Name</label>
         </div>
-        <div class="form__group field">
-          <input type="input" class="form__field" placeholder="Post" name="post" id='post' required />
-          <label for="Post" class="form__label">Post</label>
+        <div className="form__group field">
+          <input type="input" className="form__field" placeholder="Post" name="post" id='post' required />
+          <label htmlFor="Post" className="form__label">Post</label>
         </div>
-        <div class="form__group field">
-          <input type="phone" class="form__field" placeholder="Phone" name="phone" id='phone' required />
-          <label for="Phone" class="form__label">Phone</label>
+        <div className="form__group field">
+          <input type="phone" className="form__field" placeholder="Phone" name="phone" id='phone' required />
+          <label htmlFor="Phone" className="form__label">Phone</label>
         </div>
-        <div class="form__group field">
-          <input type="email" class="form__field" placeholder="Email" name="email" id='email' required />
-          <label for="Email" class="form__label">Email</label>
+        <div className="form__group field">
+          <input type="email" className="form__field" placeholder="Email" name="email" id='email' required />
+          <label htmlFor="Email" className="form__label">Email</label>
         </div>
         </div>        
-        <button class="button-36" role="button" type="submit">Add new Candidate</button>
+        <button className="button-36" role="button" type="submit">Add new Candidate</button>
       </form>
     </>
   )

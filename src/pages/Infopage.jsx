@@ -25,8 +25,6 @@ export function Infopage() {
       testStatus: "Not Started",
       offerStatus: "No offer",
       workStatus: "Not Accepted",
-      whatsApp: "https://www.linkedin.com/in/viktor-solonnik",
-      telegram: "https://www.linkedin.com/in/viktor-solonnik",
       rejection: ""
     },
     {
@@ -46,8 +44,6 @@ export function Infopage() {
       testStatus: "Not Started",
       offerStatus: "No offer",
       workStatus: "Not Accepted",
-      whatsApp: "https://www.linkedin.com/in/viktor-solonnik",
-      telegram: "https://www.linkedin.com/in/viktor-solonnik",
       rejection: ""
     },
     {
@@ -67,8 +63,6 @@ export function Infopage() {
       testStatus: "Not Started",
       offerStatus: "No offer",
       workStatus: "Not Accepted",
-      whatsApp: "https://www.linkedin.com/in/viktor-solonnik",
-      telegram: "https://www.linkedin.com/in/viktor-solonnik",
       rejection: ""
     }
   ])
