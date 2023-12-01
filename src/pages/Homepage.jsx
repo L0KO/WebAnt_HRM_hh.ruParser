@@ -24,15 +24,18 @@ export function Homepage() {
     .catch(error => console.log('Ошибка:', error));
     }, []);
 
-  function addCandidate(name, post, phone, email) {
-    setCandidat([...candidat, {
-      id: candidat.length,
-      name: name,
-      status: "En cours",
-      post: post,
-      phone: phone,
-      email: email
-    }])
+  function addCandidate(objectToSend) {
+    let url = 'http://localhost:3000/resume/add/';
+    let data = objectToSend;
+    console.log(`data: ${data}`)
+    console.log(data)
+    fetch(url, {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data), 
+    })
   }
 
   function deleteCandidate(id) {
@@ -41,7 +44,7 @@ export function Homepage() {
 
   return (
     <>
-      <NewCandidateForm addCandidate={addCandidate} />
+      <NewCandidateForm addCandidate={addCandidate} id={candidat.length}/>
       <CandidatList candidat={candidat} deleteCandidate={deleteCandidate} />
     </>
   )
