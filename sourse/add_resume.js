@@ -2,17 +2,13 @@ const express = require('express');
 const router = express.Router();
 const { spawnSync } = require('child_process');
 const fs = require('fs');
-const initModels = require("../models/init_models")
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/resumes');
-const models = initModels.initModels(sequelize);
 const {error, json} = require('./responseHelper')
+const { v4: uuidv4 } = require('uuid');
 
-// const urls = [
-//     "https://rostov.hh.ru/resume/3a715c5aff0bb48bc70039ed1f7a7544493266",
-//     "https://rostov.hh.ru/applicant/resumes/view?resume=f9c3d452ff0bb486ac0039ed1f354e79486774",
-//     "https://rostov.hh.ru/applicant/resumes/view?resume=1a983fbfff0861bb450039ed1f7a59704b504e"
-// ]
+const getModels = require('../database/database');
+const initData = require('../initData.js');
+
+const models = getModels();
 
 router.get('/', async (req, res) => {
     fs.readFile('data/resume.json', 'utf-8', (err, data) => {
@@ -30,7 +26,7 @@ router.get('/', async (req, res) => {
 
 router.post('/parse', async (req, res) => {
     const link = req.body.resume_link;
-    const parseResult = spawnSync('C:\\Users\\tolst\\PycharmProjects\\hh\\venv\\Scripts\\python.exe', ['parser/main.py', link]);
+    const parseResult = spawnSync(initData.pythonPath, ['parser/main.py', link]);
 
     if (parseResult.status == 0) {
         fs.readFile('data/resume.json', (err, data) => {
@@ -60,13 +56,15 @@ router.post('/', async (req, res) => {
 });
 
 function addToBD(resume) {
-    fs.readFile('data/resume.json', async (err, data) => {
-        r = JSON.parse(data)
-        r.id = 20
-        r.state = {state: "hhh"}
-        models.Resume.create(r);
-    })
-    // models.Resume.create(JSON.parse());
+    // fs.readFile('data/resume.json', async (err, data) => {
+    //     r = JSON.parse(data)
+    //     r.id = uuidv4();
+    //     r.state = {state: "hhh"}
+    //     models.Resume.create(r);
+    // })
+    r = JSON.parse(resume);
+    r.id = uuidv4();
+    models.Resume.create(r);
 }
 
 models.Resume.sync();

@@ -1,9 +1,10 @@
 const express = require('express');
 const { Liquid } = require('liquidjs');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 const resumeAddRoute = require('./sourse/add_resume');
 const resumeListRoute = require('./sourse/list_resume');
-const cors = require('cors')
 
 const engine = new Liquid();
 const app = express();
@@ -17,7 +18,7 @@ app.set('view engine', 'liquid');
 app.use(express.static('assets'));
 
 app.use(function (req, res, next) {
-    res.header("Content-Type",'application/json');
+    res.header("Content-Type","text/html");
     next();
 });
 
