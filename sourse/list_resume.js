@@ -47,10 +47,25 @@ router.post('/delete/:id', async (req, res) => {
         return;
     }
 
-    res = findedResume.destroy();
+    findedResume.destroy();
 
-    console.log(res);
     console.log("Data is deleted")
+});
+
+router.post('/update/:id', async (req, res) => {
+    findedResume = await models.Resume.findOne({
+        where: {id: req.params.id}
+    });
+
+    if (findedResume == null) {
+        error(res, 404, "Not found", "", "");
+        return;
+    }
+
+    delete req.body.id;
+    findedResume.set(req.body);
+    await findedResume.save();
+    console.log('data updated');
 });
 
 module.exports = router;

@@ -10,20 +10,6 @@ const initData = require('../initData.js');
 
 const models = getModels();
 
-router.get('/', async (req, res) => {
-    fs.readFile('data/resume.json', 'utf-8', (err, data) => {
-        if (err) {
-            console.log(err);
-            res.render('resume');
-            return;
-        }
-
-        res.render('resume', {
-            resume: JSON.parse(data)
-        });
-    })
-})
-
 router.post('/parse', async (req, res) => {
     const link = req.body.resume_link;
     const parseResult = spawnSync(initData.pythonPath, ['parser/main.py', link]);
@@ -41,30 +27,23 @@ router.post('/parse', async (req, res) => {
         error(res, 400, "Bad Request", "Invalid link", parseResult.stderr);
     }
 
-    // fs.unlink('resume.json', (err) => {
-    //     if (err) {
-    //         console.log(err);
-    //     } else {
-    //         console.log("File deleted");
-    //     }
-    // });
+    fs.unlink('resume.json', (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("File deleted");
+        }
+    });
 });
 
 router.post('/', async (req, res) => {
-    addToBD(req.body.resume);
+    addToBD(req.body);
     console.log("Data is inserted");
 });
 
 function addToBD(resume) {
-    // fs.readFile('data/resume.json', async (err, data) => {
-    //     r = JSON.parse(data)
-    //     r.id = uuidv4();
-    //     r.state = {state: "hhh"}
-    //     models.Resume.create(r);
-    // })
-    r = JSON.parse(resume);
-    r.id = uuidv4();
-    models.Resume.create(r);
+    resume.id = uuidv4();
+    models.Resume.create(resume);
 }
 
 models.Resume.sync();
