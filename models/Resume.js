@@ -28,39 +28,39 @@ module.exports = function(sequelize, DataTypes) {
         },
         area: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         title: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         specialization: {
             type: DataTypes.ARRAY(DataTypes.JSONB),
-            allowNull: false
+            allowNull: true
         },
         salary: {
             type: DataTypes.JSONB,
-            allowNull: false
+            allowNull: true
         },
         education_level: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         education: {
             type: DataTypes.ARRAY(DataTypes.JSONB),
-            allowNull: false
+            allowNull: true
         },
         language: {
             type: DataTypes.ARRAY(DataTypes.JSONB),
-            allowNull: false
+            allowNull: true
         },
         experience: {
             type: DataTypes.ARRAY(DataTypes.JSONB),
-            allowNull: false
+            allowNull: true
         },
         skill_set: {
             type: DataTypes.ARRAY(DataTypes.STRING),
-            allowNull: false
+            allowNull: true
         },
         skills: {
             type: DataTypes.STRING,

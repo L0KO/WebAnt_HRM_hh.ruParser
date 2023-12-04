@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
     res.redirect("/resume");
 });
 
-app.use('/resume/add', resumeAddRoute);
+app.use('/resume/list/add', resumeAddRoute);
 app.use('/resume/list', resumeListRoute);
 
 
