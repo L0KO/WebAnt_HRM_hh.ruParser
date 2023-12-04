@@ -7,40 +7,73 @@ export function Infopage() {
   let { state } = useLocation();
   // console.log(state);
 
-  const [candidat, setCandidat] = useState({})
-
+  // const [candidat, setCandidat] = useState({})
+  const [candidat, setCandidat] = useState({
+    id: 0,
+    state: {
+      state: "Ожидание рассмотрения"
+    },
+    personal_name: '',
+    contacts: {
+      email: '',
+      phone: ''
+    },
+    birth_date: '',
+    gender: '',
+    area: '',
+    title: '',
+    specialization: [{
+      name: '',
+      profarea_name: "Специализации:"
+    }],
+    salary: {
+      amount: '',
+      currency: "₽ на руки"
+    },
+    education_level: '',
+    education: [{
+      name: '',
+      year: '',
+      organization: ''
+    }],
+    language: [{
+      name: '',
+      level: ''
+    }],
+    experience: [{
+      end: '',
+      start: '',
+      position: '',
+      description: '',
+      organization: '',
+    }],
+    skill_set: [''],
+    skills: ''
+  })
+  
   useEffect(() => {
     fetch(`http://localhost:3000/resume/list/${state.id}`)
     .then(response => response.json())
-    .then(data => {
-    const newCandidat = {
-    name: data.personal_name,
-    phone: data.contacts.phone,
-    email: data.contacts.email,
-    dateOfBirth: data.birth_date,
-    gender: data.gender,
-    area: data.area,
-    post: data.title,
-    specialization: data.specialization,
-    salary: data.salary,
-    education_level: data.education_level,
-    education: data.education,
-    language: data.language,
-    experience: data.experience,
-    skill_set: data.skill_set,
-    skills: data.skills,
-    status: "", 
-    };
-    setCandidat(newCandidat);
-    })
+    .then(data => setCandidat(data))
     .catch(error => console.log('Ошибка:', error));
     }, []);
+
+    function saveCandidate(objectToSend) {
+      let url = `http://localhost:3000/resume/list/update/${state.id}`;
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(objectToSend),
+      })
+    }
 
     console.log(candidat);
 
   return (
     <div className="infopage">
-      <CandidateCard candidat={candidat} />
+      <CandidateCard candidat={candidat} setCandidat={setCandidat} saveCandidate={saveCandidate}/>
       <Link to="/">Home</Link>
     </div>
   )

@@ -47,12 +47,15 @@ export function Homepage() {
     skill_set: [''],
     skills: ''
   })
+  const [gender, setGender] = useState(parsedCandidat.gender)
+  const [education_level, setEducation_level] = useState(parsedCandidat.education_level)
+  const [language_level, setLanguage_level] = useState(parsedCandidat.language[0].level)
 
   useEffect(() => {
     fetch('http://localhost:3000/resume/list/')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        // console.log(data);
         const newCandidat = data.map(element => ({
           id: element.id,
           name: element.personal_name,
@@ -69,8 +72,8 @@ export function Homepage() {
   function addCandidate(objectToSend) {
     let url = 'http://localhost:3000/resume/add/';
     let data = objectToSend;
-    console.log(`data: ${data}`)
-    console.log(data)
+    // console.log(`data: ${data}`)
+    // console.log(data)
     fetch(url, {
       method: 'POST',
       headers: {
@@ -83,8 +86,8 @@ export function Homepage() {
   function parseCandidate(objectToSend) {
     let url = 'http://localhost:3000/resume/add/parse';
     let data = objectToSend;
-    console.log(`data: ${data}`)
-    console.log(data)
+    // console.log(`data: ${data}`)
+    // console.log(data)
     fetch(url, {
       method: 'POST',
       headers: {
@@ -94,23 +97,21 @@ export function Homepage() {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
-        // let parsedData = JSON.parse(JSON.stringify(data));
-        // let parsedData = JSON.parse(JSON.stringify(data));
-        // console.log(parsedData);
         setParsedCandidat(data)
-        console.log(parsedCandidat)
+        setGender(data.gender)
+        setEducation_level(data.education_level)
+        setLanguage_level(data.language[0].level)
       })
   }
 
   function deleteCandidate(id) {
-    // setCandidat(candidat.filter(candidate => candidate.id !== id))
+    setCandidat(candidat.filter(candidate => candidate.id !== id))
     fetch(`http://localhost:3000/resume/list/delete/${id}`, { method: 'POST' })
   }
 
   return (
     <>
-      <NewCandidateForm parseCandidate={parseCandidate} addCandidate={addCandidate} parsedCandidat={parsedCandidat} id={candidat.length} />
+      <NewCandidateForm parseCandidate={parseCandidate} gender={gender} setGender={setGender} education_level={education_level} setEducation_level={setEducation_level} language_level={language_level} setLanguage_level={setLanguage_level} addCandidate={addCandidate} parsedCandidat={parsedCandidat} id={candidat.length} />
       <CandidatList candidat={candidat} deleteCandidate={deleteCandidate} />
     </>
   )
