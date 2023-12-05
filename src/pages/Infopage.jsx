@@ -5,9 +5,7 @@ import { CandidateCard } from "../components/CandidateCard";
 export function Infopage() {
 
   let { state } = useLocation();
-  // console.log(state);
 
-  // const [candidat, setCandidat] = useState({})
   const [candidat, setCandidat] = useState({
     id: 0,
     state: {

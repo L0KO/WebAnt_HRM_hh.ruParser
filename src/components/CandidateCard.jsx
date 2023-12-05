@@ -2,29 +2,41 @@ export function CandidateCard({ candidat, setCandidat, saveCandidate }) {
 
   let index = 0;
 
+  function handleSave(e) {
+    e.preventDefault();
+    saveCandidate(candidat)
+  }
+
   return (
     <div className="card">
-      <form onSubmit={saveCandidate(candidat)}>
+      <form onSubmit={handleSave}>
         <div className="card-body">
           <div style={{ display: "flex", gap: "20px" }} className="FIO-info-card">
             {/* <p className="card-title">{candidat.personal_name}</p> */}
-            <input type="text" value={candidat.personal_name} onChange={e => setCandidat({ ...candidat, personal_name: e.target.value })} />
+            <input type="text" value={candidat.personal_name} onChange={e => 
+              setCandidat({ ...candidat, personal_name: e.target.value })} />
           </div>
           <div style={{ display: "flex", gap: "20px" }} className="contact-info-card">
             {/* <p className="card-title">{candidat.contacts.phone}</p> */}
-            <input type="text" value={candidat.contacts.phone} onChange={e => setCandidat({ ...candidat, contacts: { email: candidat.contacts.email, phone: e.target.value } })} />
+            <input type="text" value={candidat.contacts.phone} onChange={e => 
+              setCandidat({ ...candidat, contacts: { email: candidat.contacts.email, phone: e.target.value } })} />
             {/* <p className="card-title">{candidat.contacts.email}</p> */}
-            <input type="text" value={candidat.contacts.email} onChange={e => setCandidat({ ...candidat, contacts: { phone: candidat.contacts.phone, email: e.target.value } })} />
+            <input type="text" value={candidat.contacts.email} onChange={e => 
+              setCandidat({ ...candidat, contacts: { phone: candidat.contacts.phone, email: e.target.value } })} />
           </div>
           <div style={{ display: "flex", gap: "20px" }} className="personal-info-card">
             {/* <p className="card-title">{candidat.gender}</p> */}
-            <input type="text" value={candidat.gender} onChange={e => setCandidat({ ...candidat, gender: e.target.value })} />
+            <input type="text" value={candidat.gender} onChange={e => 
+              setCandidat({ ...candidat, gender: e.target.value })} />
             {/* <p className="card-title">{candidat.birth_date}</p> */}
-            <input type="text" value={candidat.birth_date} onChange={e => setCandidat({ ...candidat, birth_date: e.target.value })} />
+            <input type="text" value={candidat.birth_date} onChange={e => 
+              setCandidat({ ...candidat, birth_date: e.target.value })} />
             {/* <p className="card-title">{candidat.area}</p> */}
-            <input type="text" value={candidat.area} onChange={e => setCandidat({ ...candidat, area: e.target.value })} />
+            <input type="text" value={candidat.area} onChange={e => 
+              setCandidat({ ...candidat, area: e.target.value })} />
             {/* <p className="card-title">{candidat.title}</p> */}
-            <input type="text" value={candidat.title} onChange={e => setCandidat({ ...candidat, title: e.target.value })} />
+            <input type="text" value={candidat.title} onChange={e => 
+              setCandidat({ ...candidat, title: e.target.value })} />
           </div>
           <div style={{ display: "flex", gap: "20px" }} className="personal-info-card">
             <ul>
@@ -32,7 +44,8 @@ export function CandidateCard({ candidat, setCandidat, saveCandidate }) {
                 return <li key={index++}>
                   {specialization.profarea_name}
                   {/* {specialization.name} */}
-                  <input type="text" value={specialization.name} onChange={e => setCandidat({ ...candidat, specialization: [{ profarea_name: candidat.specialization[0].profarea_name, name: e.target.value }] })} />
+                  <input type="text" value={specialization.name} onChange={e => 
+                    setCandidat({ ...candidat, specialization: [{ profarea_name: candidat.specialization[0].profarea_name, name: e.target.value }] })} />
                 </li>
               }
               )}
@@ -41,9 +54,11 @@ export function CandidateCard({ candidat, setCandidat, saveCandidate }) {
           <div style={{ display: "flex", gap: "20px" }} className="personal-info-card">
             <p className="card-title">{candidat.salary?.currency}</p>
             {/* <p className="card-title">{candidat.salary?.amount}</p> */}
-            <input type="number" value={candidat.salary.amount} onChange={e => setCandidat({ ...candidat, salary: { currency: candidat.salary.currency, amount: e.target.value } })} />
+            <input type="number" value={candidat.salary.amount} onChange={e => 
+              setCandidat({ ...candidat, salary: { currency: candidat.salary.currency, amount: e.target.value } })} />
             {/* <p className="card-title">{candidat.education_level}</p> */}
-            <select name="education_level" id="education_level" value={candidat.education_level} onChange={e => setCandidat({ ...candidat, education_level: e.target.value })}>
+            <select name="education_level" id="education_level" value={candidat.education_level} onChange={e => 
+              setCandidat({ ...candidat, education_level: e.target.value })}>
               <option hidden value="">Ваш уровень образования</option>
               <option value="Среднее образование">Среднее образование</option>
               <option value="Среднее специальное образование">Среднее специальное образование</option>
@@ -60,11 +75,14 @@ export function CandidateCard({ candidat, setCandidat, saveCandidate }) {
               {candidat.education?.map((education) => {
                 return <li key={index++}>
                   {/* {education.year} */}
-                  <input type="text" value={education.year} onChange={e => setCandidat({ ...candidat, education: [{ name: candidat.education[0].name, organization: candidat.education[0].organization, year: e.target.value }] })} />
+                  <input type="text" value={education.year} onChange={e => 
+                    setCandidat({ ...candidat, education: [{ name: candidat.education[0].name, organization: candidat.education[0].organization, year: e.target.value }] })} />
                   {/* {education.name} */}
-                  <input type="text" value={education.name} onChange={e => setCandidat({ ...candidat, education: [{ year: candidat.education[0].year, organization: candidat.education[0].organization, name: e.target.value }] })} />
+                  <input type="text" value={education.name} onChange={e => 
+                    setCandidat({ ...candidat, education: [{ year: candidat.education[0].year, organization: candidat.education[0].organization, name: e.target.value }] })} />
                   {/* {education.organization} */}
-                  <input type="text" value={education.organization} onChange={e => setCandidat({ ...candidat, education: [{ name: candidat.education[0].name, year: candidat.education[0].year, organization: e.target.value }] })} />
+                  <input type="text" value={education.organization} onChange={e => 
+                    setCandidat({ ...candidat, education: [{ name: candidat.education[0].name, year: candidat.education[0].year, organization: e.target.value }] })} />
                 </li>
               }
               )}
@@ -75,9 +93,11 @@ export function CandidateCard({ candidat, setCandidat, saveCandidate }) {
               {candidat.language?.map((language) => {
                 return <li key={index++}>
                   {/* {language.name} */}
-                  <input type="text" value={language.name} onChange={e => setCandidat({ ...candidat, language: [{ level: candidat.language[0].level, name: e.target.value }] })} />
+                  <input type="text" value={language.name} onChange={e => 
+                    setCandidat({ ...candidat, language: [{ level: candidat.language[0].level, name: e.target.value }] })} />
                   {/* {language.level} */}
-                  <select name="language_level" id="language_level" value={language.level} onChange={e => setCandidat({ ...candidat, language: [{ name: candidat.language[0].name, level: e.target.value }] })}>
+                  <select name="language_level" id="language_level" value={language.level} onChange={e => 
+                    setCandidat({ ...candidat, language: [{ name: candidat.language[0].name, level: e.target.value }] })}>
                     <option hidden value="">Ваш уровень языка</option>
                     <option value="A1 - Начальный">A1 - Начальный</option>
                     <option value="A2 - Элементарный">A2 - Элементарный</option>
@@ -97,15 +117,65 @@ export function CandidateCard({ candidat, setCandidat, saveCandidate }) {
               {candidat.experience?.map((experience) => {
                 return <li key={index++}>
                   {/* {experience.organization} */}
-                  <input type="text" value={experience.organization} onChange={e => setCandidat({ ...candidat, experience: [{ position: candidat.experience[0].position, start: candidat.experience[0].start, end: candidat.experience[0].end, description: candidat.experience[0].description, organization: e.target.value }] })} />
+                  <input type="text" value={experience.organization} onChange={e =>
+                    setCandidat({
+                      ...candidat, experience: candidat.experience.map(obj =>
+                      (obj.id === experience.id ? obj = {
+                        organization: e.target.value,
+                        position: experience.position,
+                        start: experience.start,
+                        end: experience.end,
+                        description: experience.description
+                      } : obj))
+                    })} />
                   {/* {experience.position} */}
-                  <input type="text" value={experience.position} onChange={e => setCandidat({ ...candidat, experience: [{ organization: candidat.experience[0].organization, start: candidat.experience[0].start, end: candidat.experience[0].end, description: candidat.experience[0].description, position: e.target.value }] })} />
+                  <input type="text" value={experience.position} onChange={e =>
+                    setCandidat({
+                      ...candidat, experience: candidat.experience.map(obj =>
+                      (obj.id === experience.id ? obj = {
+                        organization: experience.organization,
+                        position: e.target.value,
+                        start: experience.start,
+                        end: experience.end,
+                        description: experience.description
+                      } : obj))
+                    })} />
                   {/* {experience.start} */}
-                  <input type="text" value={experience.start} onChange={e => setCandidat({ ...candidat, experience: [{ position: candidat.experience[0].position, organization: candidat.experience[0].organization, end: candidat.experience[0].end, description: candidat.experience[0].description, start: e.target.value }] })} />
+                  <input type="text" value={experience.start} onChange={e =>
+                    setCandidat({
+                      ...candidat, experience: candidat.experience.map(obj =>
+                      (obj.id === experience.id ? obj = {
+                        organization: experience.organization,
+                        position: experience.position,
+                        start: e.target.value,
+                        end: experience.end,
+                        description: experience.description
+                      } : obj))
+                    })} />
                   {/* {experience.end} */}
-                  <input type="text" value={experience.end} onChange={e => setCandidat({ ...candidat, experience: [{ position: candidat.experience[0].position, start: candidat.experience[0].start, organization: candidat.experience[0].organization, description: candidat.experience[0].description, end: e.target.value }] })} />
+                  <input type="text" value={experience.end} onChange={e =>
+                    setCandidat({
+                      ...candidat, experience: candidat.experience.map(obj =>
+                      (obj.id === experience.id ? obj = {
+                        organization: experience.organization,
+                        position: experience.position,
+                        start: experience.start,
+                        end: e.target.value,
+                        description: experience.description
+                      } : obj))
+                    })} />
                   {/* {experience.description} */}
-                  <input type="text" value={experience.description} onChange={e => setCandidat({ ...candidat, experience: [{ position: candidat.experience[0].position, start: candidat.experience[0].start, end: candidat.experience[0].end, organization: candidat.experience[0].organization, description: e.target.value }] })} />
+                  <input type="text" value={experience.description} onChange={e =>
+                    setCandidat({
+                      ...candidat, experience: candidat.experience.map(obj =>
+                      (obj.id === experience.id ? obj = {
+                        organization: experience.organization,
+                        position: experience.position,
+                        start: experience.start,
+                        end: experience.end,
+                        description: e.target.value,
+                      } : obj))
+                    })} />
                 </li>
               }
               )}
@@ -116,9 +186,11 @@ export function CandidateCard({ candidat, setCandidat, saveCandidate }) {
               {candidat.skill_set?.map((skill_set) => {
                 return <li key={index++}>
                   {/* {skill_set} */}
-                  <input type="text" value={skill_set} onChange={e => 
-                    setCandidat({ ...candidat, skill_set: candidat.skill_set.map(obj => 
-                    (obj.id === skill_set.id ? obj = e.target.value : obj))})} />
+                  <input type="text" value={skill_set} onChange={e =>
+                    setCandidat({
+                      ...candidat, skill_set: candidat.skill_set.map(obj =>
+                        (obj.id === skill_set.id ? obj = e.target.value : obj))
+                    })} />
                 </li>
               })}
             </ul>

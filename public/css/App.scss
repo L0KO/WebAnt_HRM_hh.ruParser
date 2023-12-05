@@ -14,16 +14,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 5%;
 }
 
 $primary: #11998e;
 $secondary: #38ef7d;
 $gray: #9b9b9b;
+
 .form__group {
   position: relative;
   padding: 15px 0 0;
   margin-top: 10px;
-  width: 50%;
+  // width: 50%;
 }
 
 .form__field {

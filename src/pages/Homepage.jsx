@@ -71,7 +71,6 @@ export function Homepage() {
 
   function addCandidate(objectToSend) {
     let url = 'http://localhost:3000/resume/add/';
-    let data = objectToSend;
     // console.log(`data: ${data}`)
     // console.log(data)
     fetch(url, {
@@ -79,15 +78,13 @@ export function Homepage() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(objectToSend),
     })
   }
 
   function parseCandidate(objectToSend) {
-    let url = 'http://localhost:3000/resume/add/parse';
+    let url = 'http://localhost:3000/resume/list/add/parse';
     let data = objectToSend;
-    // console.log(`data: ${data}`)
-    // console.log(data)
     fetch(url, {
       method: 'POST',
       headers: {

@@ -1,9 +1,59 @@
+$primary: #11998e;
+$secondary: #38ef7d;
+$gray: #9b9b9b;
+
 form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  // align-items: flex-start;
+  // flex-wrap: wrap;
+  // gap: 20px;
+}
+
+#date{
+  color: $gray;
+}
+
+#greyText {
+  color: $gray;
+}
+option:not(:checked) {
+  color: black; 
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; 
+}
+
+.formContainer{
+  border-radius: 25px;
+  border: 2px solid $gray;
+  display: flex;
+  justify-content: space-between;
   gap: 20px;
-  width: 100%;
+}
+
+.formContainer:hover {
+  border: double 2px transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(to right, $primary, $secondary);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
+.inputContainerGroup{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 80%;
+  // gap: 20px;
+}
+
+.inputContainer{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 240px;
 }
 
 .input-container {
@@ -11,10 +61,32 @@ form {
   flex-direction: row;
   align-items: center;
   gap: 20px;
-
   width: 100%;
 }
 
+.candidatForm{
+  width: 80%;
+}
+
+.candidatForm button{
+  margin-top: 62px;
+  width: 20%;
+}
+
 .fetchForm{
+  display: flex;
+  flex-direction: column;
+  // margin-top: 20px;
   margin-bottom: 20px;
+  padding-top: 45px;
+  align-items: center;
+  width: 20%;
+}
+
+#resume_link{
+  margin-bottom: 20px;
+}
+
+#resume_link_button{
+  width: 85%;
 }
