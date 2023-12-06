@@ -1,0 +1,21 @@
+.infopage li{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  border: none;
+  list-style: none;
+}
+
+.infopage li:hover{
+  border: none;
+}
+
+.infopage ul{
+  margin: 0 ;
+}
+
+textarea {
+  resize: none;
+  border-right: 2px solid grey !important;
+  // border-radius: 5px;
+}

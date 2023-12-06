@@ -48,31 +48,35 @@ export function Infopage() {
     skill_set: [''],
     skills: ''
   })
-  
+
   useEffect(() => {
     fetch(`http://localhost:3000/resume/list/${state.id}`)
-    .then(response => response.json())
-    .then(data => setCandidat(data))
-    .catch(error => console.log('Ошибка:', error));
-    }, []);
+      .then(response => response.json())
+      .then(data => setCandidat(data))
+      .catch(error => console.log('Ошибка:', error));
+  }, []);
 
-    function saveCandidate(objectToSend) {
-      let url = `http://localhost:3000/resume/list/update/${state.id}`;
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(objectToSend),
-      })
-    }
+  function saveCandidate(objectToSend) {
+    let url = `http://localhost:3000/resume/list/update/${state.id}`;
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(objectToSend),
+    })
+  }
 
-    console.log(candidat);
+  console.log(candidat);
 
   return (
     <div className="infopage">
-      <CandidateCard candidat={candidat} setCandidat={setCandidat} saveCandidate={saveCandidate}/>
-      <Link to="/">Home</Link>
+      <div className="reverse" style={{display: "flex", flexDirection: "row-reverse", paddingTop: "100px"}}>
+        <Link id="linkToGoBack" to="/">
+          <button className="button-36-delete" role="button">Go back</button>
+        </Link>
+      </div>
+      <CandidateCard candidat={candidat} setCandidat={setCandidat} saveCandidate={saveCandidate} />
     </div>
   )
 }

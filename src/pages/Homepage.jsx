@@ -70,7 +70,7 @@ export function Homepage() {
   }, []);
 
   function addCandidate(objectToSend) {
-    let url = 'http://localhost:3000/resume/add/';
+    let url = 'http://localhost:3000/resume/list/add/';
     // console.log(`data: ${data}`)
     // console.log(data)
     fetch(url, {

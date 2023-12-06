@@ -173,7 +173,7 @@ export function NewCandidateForm({ addCandidate, parseCandidate, setGender, gend
                   <option value="C2 - В совершенстве">C2 - В совершенстве</option>
                   <option value="Родной">Родной</option>
                 </select>
-                <label htmlFor="language_level" className="form__label">language Level</label>
+                <label htmlFor="language_level" className="form__label">Language Level</label>
               </div>
             </div>
             <div className="inputContainer">
